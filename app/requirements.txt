@@ -1,0 +1,1 @@
+#contiene un listado de todas las dependencias (librerías externas) que el proyecto necesitará para funcionar correctamente.
