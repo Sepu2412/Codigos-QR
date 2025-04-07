@@ -7,7 +7,10 @@ class QRReader:
         '''self.camara: bool = camara'''
 
     def leer_qr_desde_imagen(self, ruta_imagen: str) -> str:
-        pass
+        try:
+            img = Image.open(ruta_imagen)
+            decoded = pyzbar.decode(img)
+            if 
 
     def leer_qr_desde_camara(self) -> str:
         pass
