@@ -7,7 +7,7 @@ class QRGenerator:
     def __init__(self, contenido: str, color: str = "black", logo = None, tamaño: int = 300):
         self.contenido: str = contenido
         self.color : str = color
-        self.logo : logo
+        self.logo = logo
         self.tamaño : int = tamaño
         self.qr_img = None
 
@@ -32,14 +32,20 @@ class QRGenerator:
         return img
 
 
+
     def guardar_qr(self, ruta: str = None):
         if self.qr_img:
             if ruta is None:
                 escritorio = os.path.join(os.path.expanduser("~"), "Desktop")
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
                 ruta = os.path.join(escritorio, f"qr_{timestamp}.png")
+
+
+            os.makedirs(os.path.dirname(ruta), exist_ok=True)
+
             self.qr_img.save(ruta)
             print(f"QR guardado en: {ruta}")
         else:
             print("Primero debes generar el QR con generar_qr()")
+
 
