@@ -29,7 +29,7 @@ def menu_principal():
 
         elif opcion == "2":
             ruta_imagen = input("Ruta de la imagen con QR: ")
-            lector = QRReader()
+            lector = QRReader(ruta_imagen)
             resultado = lector.leer_qr_desde_imagen(ruta_imagen)
             print(f"\nContenido del QR: {resultado}")
 
@@ -39,3 +39,6 @@ def menu_principal():
 
         else:
             print("Opción no válida. Intenta de nuevo.")
+
+if __name__ == "__main__":
+    menu_principal()
