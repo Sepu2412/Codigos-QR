@@ -1,3 +1,6 @@
+from PIL import Image
+import pyzbar.pyzbar as pyzbar
+
 class QRReader:
     def __init__(self, imagen:str, camara: bool = False):
         self.imagen: str = imagen
