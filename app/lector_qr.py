@@ -15,5 +15,8 @@ class QRReader:
             else:
                 return "No se pudo encontrar ningún código QR en la imagen."
 
+        except Exception as e:
+            return f"Error al leer el QR: {e}"
+
     def leer_qr_desde_camara(self) -> str:
         pass
