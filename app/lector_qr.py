@@ -1,7 +1,10 @@
+from PIL import Image
+import pyzbar.pyzbar as pyzbar
+
 class QRReader:
-    def __init__(self, imagen:str, camara: bool = False):
+    def __init__(self, imagen:str, '''camara: bool = False'''):
         self.imagen: str = imagen
-        self.camara: bool = camara
+        '''self.camara: bool = camara'''
 
     def leer_qr_desde_imagen(self, ruta_imagen: str) -> str:
         pass
