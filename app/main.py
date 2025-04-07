@@ -26,3 +26,9 @@ def menu_principal():
             ruta = os.path.join(escritorio, nombre_archivo)
 
             generador.guardar_qr(ruta)
+
+        elif opcion == "2":
+            ruta_imagen = input("Ruta de la imagen con QR: ")
+            lector = QRReader()
+            resultado = lector.leer_qr_desde_imagen(ruta_imagen)
+            print(f"\nContenido del QR: {resultado}")
