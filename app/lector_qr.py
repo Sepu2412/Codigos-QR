@@ -10,7 +10,8 @@ class QRReader:
         try:
             img = Image.open(ruta_imagen)
             decoded = pyzbar.decode(img)
-            if 
+            if decoded:
+                return decoded[0].data.decode("utf-8")
 
     def leer_qr_desde_camara(self) -> str:
         pass
