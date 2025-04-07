@@ -32,3 +32,10 @@ def menu_principal():
             lector = QRReader()
             resultado = lector.leer_qr_desde_imagen(ruta_imagen)
             print(f"\nContenido del QR: {resultado}")
+
+        elif opcion == "3":
+            print("Saliendo del programa...")
+            break
+
+        else:
+            print("Opción no válida. Intenta de nuevo.")
