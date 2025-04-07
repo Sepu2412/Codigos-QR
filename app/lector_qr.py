@@ -2,7 +2,7 @@ from PIL import Image
 import pyzbar.pyzbar as pyzbar
 
 class QRReader:
-    def __init__(self, imagen:str, '''camara: bool = False'''):
+    def __init__(self, imagen:str):
         self.imagen: str = imagen
         '''self.camara: bool = camara'''
 
