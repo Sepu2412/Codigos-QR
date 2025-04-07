@@ -46,6 +46,6 @@ class QRGenerator:
             self.qr_img.save(ruta)
             print(f"QR guardado en: {ruta}")
         else:
-            print("Primero debes generar el QR con generar_qr()")
+            print("Primero debes generar el QR con generar_qr().")
 
 
