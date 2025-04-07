@@ -12,6 +12,8 @@ class QRReader:
             decoded = pyzbar.decode(img)
             if decoded:
                 return decoded[0].data.decode("utf-8")
+            else:
+                return "No se pudo encontrar ningún código QR en la imagen."
 
     def leer_qr_desde_camara(self) -> str:
         pass
