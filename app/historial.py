@@ -7,6 +7,8 @@ class QRHistory:
     def buscar_qr(self, texto: str) -> list:
         pass
 
+    
+
     def filtrar_qr_por_tipo(self, tipo: str) -> list:
         pass
 
