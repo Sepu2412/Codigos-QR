@@ -7,7 +7,6 @@ class DatabaseManager:
         self._crear_tabla()
 
     def _crear_tabla(self):
-        """Crea la tabla historial si no existe"""
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS historial (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,7 +18,11 @@ class DatabaseManager:
         self.conexion.commit()
 
     def guardar_historial(self, tipo: str, contenido: str, fecha: str):
-        pass
+        self.cursor.execute('''
+                            INSERT INTO historial (tipo, contenido, fecha)
+                            VALUES (?, ?, ?)
+                        ''', (tipo, contenido, fecha))
+        self.conexion.commit()
 
     def consultar_historial(self) -> list:
         pass
