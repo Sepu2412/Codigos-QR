@@ -29,4 +29,5 @@ class DatabaseManager:
         return self.cursor.fetchall()
 
     def eliminar_registro(self, id_registro: int):
-       pass
+        self.cursor.execute('DELETE FROM historial WHERE id = ?', (id_registro,))
+        self.conexion.commit()
