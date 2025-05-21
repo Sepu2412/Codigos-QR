@@ -25,7 +25,8 @@ class DatabaseManager:
         self.conexion.commit()
 
     def consultar_historial(self) -> list:
-        pass
+        self.cursor.execute('SELECT * FROM historial ORDER BY fecha DESC')
+        return self.cursor.fetchall()
 
     def eliminar_registro(self, id_registro: int):
        pass
