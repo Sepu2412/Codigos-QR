@@ -1,9 +1,22 @@
 import sqlite3
 
-class DatabasaManager:
+class DatabaseManager:
     def __init__(self,db_name: str = "qr_historial.db"):
         self.conexion = sqlite3.connect(db_name)
         self.cursor = self.conexion.cursor()
+        self._crear_tabla()
+
+    def _crear_tabla(self):
+        """Crea la tabla historial si no existe"""
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS historial (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                tipo TEXT NOT NULL,
+                contenido TEXT NOT NULL,
+                fecha TEXT NOT NULL
+            )
+        ''')
+        self.conexion.commit()
 
     def guardar_historial(self, tipo: str, contenido: str, fecha: str):
         pass
@@ -12,4 +25,4 @@ class DatabasaManager:
         pass
 
     def eliminar_registro(self, id_registro: int):
-        pass
+       pass
