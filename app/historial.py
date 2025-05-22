@@ -9,7 +9,7 @@ class QRHistory:
         return [qr for qr in self.lista_qr if texto.lower() in qr.get("contenido", "").lower()]
 
     def filtrar_qr_por_tipo(self, tipo: str) -> list:
-        pass
+        return [qr for qr in self.lista_qr if qr.get("tipo", "").lower() == tipo.lower()]
 
     def limpiar_historial(self):
-       pass
+        self.lista_qr.clear()
