@@ -12,4 +12,4 @@ class QRHistory:
         return [qr for qr in self.lista_qr if qr.get("tipo", "").lower() == tipo.lower()]
 
     def limpiar_historial(self):
-       pass
+        self.lista_qr.clear()
