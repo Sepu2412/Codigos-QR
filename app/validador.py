@@ -6,4 +6,4 @@ class QRValidator:
         return isinstance(self.datos_entrada, str) and self.datos_entrada.strip() != ""
 
     def verificar_longitud(self, max_length: int = 300) -> bool:
-        pass
+        return len(self.datos_entrada) <= max_length
