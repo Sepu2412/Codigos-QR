@@ -19,4 +19,4 @@ class QRReader:
             return f"Error al leer el QR: {e}"
 
     def leer_qr_desde_camara(self) -> str:
-        pass
+         cap = cv2.VideoCapture(0)
