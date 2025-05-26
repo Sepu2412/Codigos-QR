@@ -19,4 +19,24 @@ class QRReader:
             return f"Error al leer el QR: {e}"
 
     def leer_qr_desde_camara(self) -> str:
-         cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(0)
+        try:
+            while True:
+                ret, frame = cap.read()
+                if not ret: break
+                
+                decoded = pyzbar.decode(Image.fromarray(
+                    cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                ))
+                
+                if decoded:
+                    return decoded[0].data.decode("utf-8")
+                
+                cv2.imshow('QR Scanner', frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+        finally:
+            cap.release()
+            cv2.destroyAllWindows()
+        return "No se detectó código QR"
+    
