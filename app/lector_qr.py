@@ -1,6 +1,7 @@
 from PIL import Image
 import cv2
 import pyzbar.pyzbar as pyzbar
+import numpy as np
 
 class QRReader:
     def __init__(self, imagen:str):
