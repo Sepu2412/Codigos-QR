@@ -8,6 +8,7 @@ import os
 import time
 from datetime import datetime
 from PIL import ImageColor
+from interfaz_grafica import QRApp
 
 def color_valido(color: str) -> bool:
     try:
@@ -165,5 +166,9 @@ def menu_principal():
             print("❌ Opción no válida. Intenta de nuevo.")
 
 if __name__ == "__main__":
-    actualizar_historial()
-    menu_principal()
+    app = QRApp()
+    app.run()
+    
+    
+    #actualizar_historial()
+    #menu_principal()
