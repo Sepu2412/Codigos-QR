@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
-from PIL import Image, ImageTk, ImageColor
+from PIL import Image, ImageTk
 import cv2
 import os
 from datetime import datetime
-from typing import List, Dict, Any
+
 from generador_qr import QRGenerator
 from lector_qr import QRReader
 from exportador import QRExporter
