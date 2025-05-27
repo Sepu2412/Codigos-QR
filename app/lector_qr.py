@@ -1,7 +1,8 @@
+
 from PIL import Image
 import cv2
 import pyzbar.pyzbar as pyzbar
-import numpy as np
+
 
 class QRReader:
     def __init__(self, imagen:str):
@@ -20,25 +21,35 @@ class QRReader:
         except Exception as e:
             return f"Error al leer el QR: {e}"
 
-    def leer_qr_desde_camara(self) -> str:
+    def leer_qr_desde_camara(self, callback=None) -> str | None:
         cap = cv2.VideoCapture(0)
         try:
             while True:
                 ret, frame = cap.read()
                 if not ret: break
-                
+
                 decoded = pyzbar.decode(Image.fromarray(
                     cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 ))
-                
-                if decoded:
-                    return decoded[0].data.decode("utf-8")
-                
+
+                if decoded and callback:
+                    callback(decoded[0].data.decode("utf-8"))
+                    break
+
                 cv2.imshow('QR Scanner', frame)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
         finally:
             cap.release()
             cv2.destroyAllWindows()
-        return "No se detectó código QR"
-    
+        return None
+
+    def leer_qr_desde_frame(self, frame) -> str | None:
+        try:
+            imagen_pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+            decoded = pyzbar.decode(imagen_pil)
+            return decoded[0].data.decode("utf-8") if decoded else None
+        except Exception as e:
+            print(f"Error al leer frame: {e}")
+            return None
+

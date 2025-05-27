@@ -19,24 +19,3 @@ class QRExporter:
         imagen_qr.save(ruta_completa, format='JPEG')
         print(f"✅ QR guardado como JPG en: {ruta_completa}")
 
-    def copiar_al_portapapeles(self, imagen_qr: Image.Image):
-        try:
-            sistema = platform.system()
-            if sistema == "Windows":
-                import win32clipboard
-                from io import BytesIO
-                output = BytesIO()
-                imagen_qr.save(output, format='BMP')
-                data = output.getvalue()[14:]
-                output.close()
-
-                win32clipboard.OpenClipboard()
-                win32clipboard.EmptyClipboard()
-                win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
-                win32clipboard.CloseClipboard()
-                print("📋 Imagen copiada al portapapeles.")
-            else:
-                print("⚠️ Solo se admite copiar al portapapeles en Windows.")
-        except Exception as e:
-            print(f"❌ Error al copiar al portapapeles: {e}")
-

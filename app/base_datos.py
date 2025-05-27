@@ -31,3 +31,11 @@ class DatabaseManager:
     def eliminar_registro(self, id_registro: int):
         self.cursor.execute('DELETE FROM historial WHERE id = ?', (id_registro,))
         self.conexion.commit()
+
+    def eliminar_todo_historial(self):
+        conexion = self._conectar()
+        cursor = conexion.cursor()
+        cursor.execute("DELETE FROM historial")
+        conexion.commit()
+        conexion.close()
+
