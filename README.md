@@ -51,7 +51,7 @@ Métodos: `buscar_qr()`, `filtrar_qr_por_tipo()`, `limpiar_historial()`.
 
 ### 5. QRExporter
 Módulo de exportación que permite guardar los códigos en formato imagen o copiarlos.  
-Métodos: `guardar_como_png()`, `guardar_como_jpg()`, `copiar_al_portapapeles()`.
+Métodos: `guardar_como_png()`, `guardar_como_jpg()`.
 
 ### 6. QRValidator
 Válida los datos que el usuario intenta convertir en QR.  
