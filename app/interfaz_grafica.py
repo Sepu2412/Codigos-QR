@@ -236,7 +236,7 @@ class QRApp(tk.Tk):
         btn_limpiar = ttk.Button(action_frame, text="Limpiar Historial", command=self._limpiar_historial)
         btn_limpiar.pack(side=tk.RIGHT, padx=5)
 
-    # Métodos de funcionalidad (se mantienen igual que en tu versión original)
+    # metodos aplicados
     def _generar_qr(self):
         contenido = self.entry_contenido.get().strip()
         if not contenido:
@@ -256,12 +256,12 @@ class QRApp(tk.Tk):
             generador = QRGenerator(contenido, color=color, logo=self.logo_path)
             self.current_qr_image = generador.generar_qr()
 
-            # Mostrar vista previa
+            # muestra previa
             img_tk = ImageTk.PhotoImage(self.current_qr_image.resize((250, 250)))
             self.lbl_preview.configure(image=img_tk, text="")
             self.lbl_preview.image = img_tk
 
-            # Guardar en historial
+            # Guarda en historial
             fecha = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             self.db.guardar_historial("generado", contenido, fecha)
             self._actualizar_historial()
@@ -319,7 +319,7 @@ class QRApp(tk.Tk):
                 if resultado:
                     self.lbl_resultado.config(text=resultado, foreground="black")
 
-                    # Guardar en historial
+                    # guarda el historial
                     fecha = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                     self.db.guardar_historial("leído", resultado, fecha)
                     self._actualizar_historial()
@@ -350,7 +350,7 @@ class QRApp(tk.Tk):
         if self.camera_active and self.cap:
             ret, frame = self.cap.read()
             if ret:
-                # Mostrar vista previa
+                # muestra la vista previa
                 cv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 img = Image.fromarray(cv_image)
                 imgtk = ImageTk.PhotoImage(image=img.resize((400, 300)))
@@ -358,18 +358,18 @@ class QRApp(tk.Tk):
                 self.camera_label.imgtk = imgtk
                 self.camera_label.configure(image=imgtk)
 
-                # Intentar leer QR
+                # Intenta leer QR
                 lector = QRReader("")
                 resultado = lector.leer_qr_desde_frame(frame)
                 if resultado:
                     self.lbl_resultado.config(text=resultado, foreground="black")
 
-                    # Guardar en historial
+                    # se gusarda en el historial apenas se escanee
                     fecha = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                     self.db.guardar_historial("leído", resultado, fecha)
                     self._actualizar_historial()
 
-                    # Detener cámara
+                    # detiene la cámara
                     self._detener_camara()
                     return
 
@@ -377,7 +377,7 @@ class QRApp(tk.Tk):
             self.camera_label.after(10, self._actualizar_frame_camara)
 
     def _actualizar_historial(self):
-        # Actualizar lista en memoria
+        # Actualizar lista 
         self.historial.lista_qr.clear()
         registros = self.db.consultar_historial()
         for registro in registros:
@@ -399,7 +399,7 @@ class QRApp(tk.Tk):
         texto_busqueda = self.entry_buscar.get().lower()
         tipo_filtro = self.combo_filtro.get().lower()
 
-        # Aplicar filtros
+        # filtra
         registros_filtrados = []
         for qr in self.historial.lista_qr:
             contenido_coincide = texto_busqueda in qr["contenido"].lower()
@@ -408,7 +408,7 @@ class QRApp(tk.Tk):
             if contenido_coincide and tipo_coincide:
                 registros_filtrados.append(qr)
 
-        # Mostrar resultados
+        # muestra los resultados
         for qr in registros_filtrados:
             self.tree.insert("", tk.END, values=(
                 qr["id"],
