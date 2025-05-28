@@ -10,8 +10,7 @@ Este proyecto tiene como objetivo desarrollar una aplicación de escritorio que 
 
 ## Descripción General del Proyecto
 
-La aplicación permite crear códigos QR personalizados con información variada como URLs, textos, contactos y credenciales Wi-Fi. También permite escanear códigos desde una imagen o cámara en tiempo real.  
-Todos los QR procesados (generados o leídos) se almacenan en un historial, el cual puede ser consultado, filtrado o exportado por el usuario.
+
 
 ---
 
