@@ -2,6 +2,7 @@ import qrcode
 from PIL import Image
 import os
 import datetime
+from validador import QRValidator
 
 class QRGenerator:
     def __init__(self, contenido: str, color: str = "black", logo = None, tamaño: int = 300):

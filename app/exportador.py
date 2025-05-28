@@ -1,6 +1,5 @@
 from PIL import Image
 import os
-import platform
 
 
 class QRExporter:
